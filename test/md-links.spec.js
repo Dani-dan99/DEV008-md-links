@@ -1,15 +1,17 @@
-const mdLinks = require("../index.js");
+const fs = require('fs');
+const path = require('path');
+const functions = require('../functions.js');
 
-describe("mdLinks", () => {
-  it("should...", () => {
-    console.log("FIX ME!");
+describe('thePathExistOrNot', () => {
+  it('should return true if the path exists', () => {
+    const existingPath = 'C:\\Users\\ldcpd\\Desktop\\Md-Lindks\\DEV008-md-links\\examplesOfLinks\\linksMd.md';
+    const result = functions.thePathExistOrNot(existingPath);
+    expect(result).toBe(true);
   });
-  //it ('Deberia devolver una promesa', () => {
-  // expect (mdLinks()).toBe(typeof Promise);
-  // });
-  it("Debe rechazar cuando el path no existe", () => {
-    return mdLinks("/laRuta/noExiste.md").catch((error) => {
-      expect(error).toBe("The route doen't exist.");
-    })
+
+  it('should return false if the path does not exist', () => {
+    const nonExistingPath = '/path/that/does/not/exist';
+    const result = functions.thePathExistOrNot(nonExistingPath);
+    expect(result).toBe(false);
   });
 });
