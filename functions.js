@@ -44,7 +44,21 @@ if (isDirectory(allPath)) {
   console.log(chalk.green("The path is not a directory"));
 }
 
+//Validar si es un archvo .md 
+const isMarkdownFile = (allPath) => {
+    const isMarkdown = path.extname(allPath);  // path.extname() devuelve la extensión de una ruta
+    return isMarkdown === '.md';
+  };
+  if (isMarkdownFile(allPath)) {
+    console.log(chalk.cyan('The path is a Markdown file'));
+  } else {
+    console.log(chalk.cyan('The path is not a Markdown file'));
+  }
+  
+  
 module.exports = {
   thePathExistOrNot,
   convertToAbsolute,
+  isDirectory,
+  isMarkdownFile,
 };
