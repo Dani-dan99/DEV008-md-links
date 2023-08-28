@@ -29,6 +29,21 @@ function convertToAbsolute(allPath) {
 console.log(chalk.bold.yellow(convertToAbsolute(allPath)));
 console.log(chalk.yellow("Is a absolute path"));
 
+//Funcion para saber si es un directorio
+const isDirectory = (allPath) => {
+  try {
+    const stats = fs.statSync(allPath); //método fs.statSync() se utiliza para devolver sincrónicamente información sobre la ruta(allPath)
+    return stats.isDirectory();
+  } catch (error) {
+    return false;
+  }
+};
+if (isDirectory(allPath)) {
+  console.log(chalk.green("The path is a directory"));
+} else {
+  console.log(chalk.green("The path is not a directory"));
+}
+
 module.exports = {
   thePathExistOrNot,
   convertToAbsolute,
